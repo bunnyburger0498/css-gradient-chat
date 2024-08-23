@@ -1,5 +1,5 @@
 # css-gradient-chat
-Counter Strike Source Colour Gradients Chat<br/>
+Counter Strike Source Colour Gradients Chat, written in AHK v1.1.33.0<br/>
 Intercepts user keys to add a special key and hex colour in front of it<br/>
 For use in Counter Strike Source with the colour server plugin<br/>
 <br/>

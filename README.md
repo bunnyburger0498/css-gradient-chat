@@ -10,8 +10,8 @@ I originally made it for myself as a goofy cool thing but others wanted it too s
 Here is an example of it in action<br/>
 https://github.com/bunnyburger0498/css-gradient-chat/blob/main/Git_ReadMeImages/videoshow.mp4
 ## How to run
-I have compiled as an .exe file on the right in the release section which you can download and run the latest build.<br/>
-Alternatively, You can download these scripts here and v1 AutoHotKey from the official site and run it via AHK.<br/>
+* [Download the latest build on the Release Page](https://github.com/bunnyburger0498/css-gradient-chat/releases)<br/>
+* Alternatively, You can download these scripts here and v1 AutoHotKey from the official site and run it via AHK.<br/>
 AutoHotKey v2 is not compatible, so make sure to download v1 if you want to use the AHK method.<br/>
 If you have experience with writing AHK stuff, feel free to edit code as you wish.<br/>
 ## Simple Colour Picker

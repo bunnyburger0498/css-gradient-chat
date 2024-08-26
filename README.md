@@ -1,9 +1,9 @@
 # css-gradient-chat
 ## About
 Counter Strike Source Colour Gradients Chat, written in AHK v1.1.33.0<br/>
-**This is in alpha so expect alot of bugs, incomplete features, etc**<br/>
 Intercepts user keys to add a special key and hex colour in front of it automatically while typing<br/>
 Used in JBlock Jailbreak/Minigames server in Counter Strike Source with the server colour plugin<br/>
+**This is in pre-alpha so expect alot of bugs, incomplete features, etc**<br/>
 ## Introduction
 Hello my JBlock neighbours, its bunnyburger with gradient chat as GUI due to popular request.<br/>
 I originally made it for myself as a goofy cool thing but others wanted it too so I made it so it has a GUI.<br/>

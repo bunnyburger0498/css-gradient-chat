@@ -21,6 +21,7 @@ Choose a colour which autocopies the code and you paste into CSS chat by pressin
 GUI subject to Usability after feature completion.<br/>
 ![What is this](Git_ReadMeImages/gradient.png)<br/>
 ## Hotkeys<br/>
+**It is highly recommended you test this out in a Untitled Notepad first to see how it works** <br/>
 ### **F12** <br/>
 - Toggle the colour chat on or off. Status of toggle is displayed in windows task tray.<br/>
  ![What is this](Git_ReadMeImages/taskbar.jpg)<br/>

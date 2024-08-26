@@ -2,7 +2,7 @@
 ## About
 Counter Strike Source Colour Gradients Chat, written in AHK v1.1.33.0<br/>
 Intercepts user keys to add a special key and hex colour in front of it automatically while typing<br/>
-Used in JBlock server in Counter Strike Source with the server colour plugin<br/>
+Used in JBlock Jailbreak/Minigames server in Counter Strike Source with the server colour plugin<br/>
 ## How to run
 I have compiled as an .exe file on the right in the release section which you can download and run the latest build<br/>
 Alternatively, You can download these scripts here and v1 AutoHotKey from the official site and run it via AHK.<br/>

@@ -13,7 +13,7 @@ Alternatively, You can download these scripts here and v1 AutoHotKey from the of
 AutoHotKey v2 is not compatible, so make sure to download v1 if you want to use the AHK method.<br/>
 If you have experience with writing AHK stuff, feel free to edit code as you wish.<br/>
 ## Simple Colour Picker
-Choose a colour which autocopies the code and you paste into CSS chat.<br/>
+Choose a colour which autocopies the code and you paste into CSS chat by pressing Ctrl+V.<br/>
 ![What is this](Git_ReadMeImages/simplepicker.jpg)<br/>
 ![What is this](Git_ReadMeImages/simplepicker_example.jpg)<br/>
 <br/>

@@ -1,6 +1,7 @@
 # css-gradient-chat
 ## About
 Counter Strike Source Colour Gradients Chat, written in AHK v1.1.33.0<br/>
+This is in alpha so expect alot of bugs, incomplete features, etc<br/>
 Intercepts user keys to add a special key and hex colour in front of it automatically while typing<br/>
 Used in JBlock Jailbreak/Minigames server in Counter Strike Source with the server colour plugin<br/>
 ## Introduction

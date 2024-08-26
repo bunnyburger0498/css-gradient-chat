@@ -7,6 +7,8 @@ Used in JBlock Jailbreak/Minigames server in Counter Strike Source with the serv
 Hello my JBlock neighbours, its bunnyburger with gradient chat as GUI due to popular request.<br/>
 I originally made it for myself as a goofy cool thing but others wanted it too so I made it so it has a GUI.<br/>
 ![What is this](Git_ReadMeImages/readme_preview.jpg)<br/>
+Here is an example of it in action<br/>
+https://github.com/bunnyburger0498/css-gradient-chat/blob/main/Git_ReadMeImages/videoshow.mp4
 ## How to run
 I have compiled as an .exe file on the right in the release section which you can download and run the latest build.<br/>
 Alternatively, You can download these scripts here and v1 AutoHotKey from the official site and run it via AHK.<br/>

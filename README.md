@@ -5,6 +5,7 @@ I originally made it for myself as a goofy cool thing but others wanted it too s
 ![What is this](Git_ReadMeImages/readme_preview.jpg)<br/>
 I have compiled as an .exe file on the right in the release section which you can download<br/>
 Alternatively, You can download these scripts here and v1 AutoHotKey from the official site and run it via AHK.<br/>
+AutoHotKey v2 is not compatible, so make sure to download v1 if you want to use the AHK method<br/>
 ## About
 Counter Strike Source Colour Gradients Chat, written in AHK v1.1.33.0<br/>
 Intercepts user keys to add a special key and hex colour in front of it automatically while typing<br/>

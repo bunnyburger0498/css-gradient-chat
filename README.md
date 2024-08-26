@@ -10,9 +10,10 @@ Choose a colour which autocopies the code and you paste into CSS chat.<br/>
 ![What is this](Git_ReadMeImages/simplepicker_example.jpg)<br/>
 <br/>
 ## Gradient Creator<br/>
+GUI subject to Usability after feature complete<br/>
 ![What is this](Git_ReadMeImages/gradient.png)<br/>
 ## Hotkeys<br/>
- **F12** - Toggle the colour chat on or off<br/>
+ **F12** - Toggle the colour chat on or off. Status of toggle is displayed in task bar<br/>
  ![What is this](Git_ReadMeImages/enabled.jpg)This means script is enabled, make sure you have a gradient loaded/created or nothing will type.<br/>
  ![What is this](Git_ReadMeImages/suspended.jpg)This means the script is suspended so you can type normally again. Gradients can still be created/loaded.<br/>
  **F11** - Insert Special paste. work in progress. <br/>

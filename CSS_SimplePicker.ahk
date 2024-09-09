@@ -1,4 +1,4 @@
-ChooseColors(GuiOptions:="", Colors*) { ;                 ChooseColors() v0.97 by SKAN, on D46L/D47K @ tiny.cc/choosecolors
+ChooseColors(GuiOptions:="", Colors*) { ;                 ChooseColors() v0.96 by SKAN, on D46L/D479 @ tiny.cc/choosecolors
 Local
   _Batchlines:= A_BatchLines
   SetBatchLines -1
@@ -150,20 +150,31 @@ Local
   SetImage.Call(Glob.Slider6.Hwnd, Tbm)
 
   ; Gui.Call("Add", "Text",     "HwndColorName x16 y+0 w250 h16 SS_CENTERIMAGE Right")
-  ; Gui.Call("Add", "Custom",   "HwndHistory CcStatic y+2 w250 h12 SS_NOTIFY SS_REALSIZECONTROL SS_BITMAP +E0x20000")
   ; AddGoSub.Call("History", "ChooseColors_HueSelect2", Glob)
   ; Gui.Call("Add", "Button",   "HwndDelQB xp yp w0 hp -Tabstop", "&D", hDelQB:=0)
   ; AddGoSub.Call("DelQB", "ChooseColors_DelColorFmQ", Glob)
 
+      Gui.Call("Add", "Custom",   "HwndHistory CcStatic y+5 w250 h1 y+2 +E0x20000")
+
+  
   Gui.Call("Margin", 16, 12)
   IH := Max(23, Min(32, CancelH))
-  ; Gui.Call("Add", "Picture",  "HwndPickScr x16 y+m w24 Left SS_CENTERIMAGE SS_ICON h" . IH)
-  ; GuiControl.Call("", Glob.PickScr.Hwnd, "*w0 *h0 hicon:" . ChooseColors_GetIcon("pickscr.png"))
-  ; AddGoSub.Call("PickScr", "ChooseColors_PickScr", Glob)
+  Gui.Call("Add", "Picture",  "HwndPickScr x16 y+m w24 Left SS_CENTERIMAGE SS_ICON h" . IH)
+  GuiControl.Call("", Glob.PickScr.Hwnd, "*w0 *h0 hicon:" . ChooseColors_GetIcon("pickscr.png"))
+  AddGoSub.Call("PickScr", "ChooseColors_PickScr", Glob)
 
-  ; Gui.Call("Add", "Picture",  "HwndPickClr x+8 yp wp hp SS_CENTERIMAGE SS_ICON")
-  ; GuiControl.Call("", Glob.PickClr.Hwnd, "*w0 *h0 hicon:" . ChooseColors_GetIcon("pickclr.png"))
-  ; AddGoSub.Call("PickClr", "ChooseColors_PickScr", Glob)
+  Gui.Call("Add", "Picture",  "HwndPickClr x+8 yp wp hp SS_CENTERIMAGE SS_ICON")
+  GuiControl.Call("", Glob.PickClr.Hwnd, "*w0 *h0 hicon:" . ChooseColors_GetIcon("pickclr.png"))
+  AddGoSub.Call("PickClr", "ChooseColors_PickScr", Glob)
+  
+  Gui.Call("Add", "Text", "x85 yp w190 hp SS_CENTERIMAGE Left" , "Screen Picker | Click Drag")
+  ; Gui.Call("Add", "Text", "x16 y+5 w250 h16 SS_CENTERIMAGE Left" , "Click Drag the squares")
+
+  
+  ; Gui.Call("Add", "Text", "x16 y+5 w250 h16 SS_CENTERIMAGE Left" , "ChooseColors() v0.96 by SKAN")
+  ; Gui.Call("Add", "Text", "x16 y+5 w250 h16 SS_CENTERIMAGE Left" , "on D46L/D479 @ tiny.cc/choosecolors")
+  ; Gui.Call("Add", "Text", "x16 y+5 w250 h16 SS_CENTERIMAGE Left" , "Modified by BunnyBurger for CSS")
+
 
   ; CW := Max(60, Min(80, CancelW))
   ; Gui.Call("Add", "Custom",     "HwndCancel CcStatic x+m hp -Tabstop Center SS_NOTIFY SS_BITMAP w" . CW, "&Cancel")
@@ -197,7 +208,6 @@ Local
   AddGoSub.Call("AddQB", "ChooseColors_AddColorToQ", Glob)
   Gui.Call("Add", "Text",     "x+0 w0", "&X")
 
-	;counter strike source - edit box
   Gui.Call("Font", MonoFont*)
   Gui.Call("Add", "Edit",     "HwndEdit0 x+6  w0 h0 ReadOnly -Tabstop", &Glob)
   Gui.Call("Add", "Edit",     "HwndEditHex xp yp w68 h26 Uppercase Limit6 Right", Color)
@@ -655,8 +665,8 @@ Local
     Glob.Func.GuiControlGet.Call("", Glob.ColorName.Hwnd, ColorName)
 
     PickClr := ( hCtrl = Glob.PickClr.Hwnd )
-    SW  := ( PickClr ? 1 : 40*(A_ScreenDPI/96) )
-    Off := ( PickClr ? 0 : SW//2 )
+    SW  := ( PickClr ? 1 : 32*(A_ScreenDPI/96) )
+    Off := ( PickClr ? 0 : SW//2  )
 
     Hbm := Glob.Func.CreateBitmap.Call(SW, SW)
     Glob.Func.MemDC.Call(mDC:=0, Hbm)
@@ -668,9 +678,7 @@ Local
     Glob.Func.SetRect.Call(RECT, x1+Off, y1+Off, x2-Off, y2-Off)
     DllCall("SetForegroundWindow","Ptr",A_ScriptHwnd)
     Glob.Func.ClipCursor.Call(RECT)
-    If ( Glob.PickClr.Hwnd )
-         ChooseColors_BoxCur(SW, SW)
-    Else Glob.Func.SetSystemCursor.Call("IDC_ARROW", "IDC_HELP")
+    Glob.Func.SetSystemCursor.Call("IDC_ARROW", "IDC_HELP")
 
     Glob.Paint := False
     Color := ""
@@ -1262,97 +1270,24 @@ Local
 }
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-ChooseColors_BoxCur(P*) {  ; v0.3 by SKAN on D47J/D47K @ tiny.cc/boxcur
-Local                      
-    If ! ( P.Count() )
-           Return DllCall("User32.dll\SystemParametersInfo", "Int",SPI_SETCURSORS := 0x57, "Int",0, "Int",0, "Int",0)
-
-    CW := Max( 32, Format("{:d}", P[1]) )
-    CH := Max( 32, Format("{:d}", P[2]) )
-    RegRead, m, HKEY_CURRENT_USER\Control Panel\Cursors, CursorBaseSize
-    m  := ( (m := Format("{:d}", m)) > 32 ? m/32 : 1 )
-    CW := Round(CW/m)
-    CH := Round(CH/m)
-
-    VarSetCapacity(BITMAPINFO, 40, 0)
-    pBMI := &BITMAPINFO,  pBits := 0
-    NumPut(1, NumPut(1,NumPut(CH,NumPut(CW,NumPut(40,pBMI+0,"Int"),"Int"),"Int"),"Short"),"Short")
-
-    hBM   := DllCall("gdi32.dll\CreateDIBSection", "Ptr",0, "Ptr",pBMI, "Int",0, "PtrP",pBits, "Ptr",0, "Int", 0, "Ptr")
-    hPen  := DllCall("Gdi32.dll\CreatePen", "Int",0, "Int",1, "Int",0xFFFFFF, "Ptr")
-    hBrush  := DllCall("Gdi32.dll\CreateSolidBrush", "Int",m!=1 || P[3]!="" ? 0xFFFFFF : 0x000000, "Ptr")
-    mDC     := DllCall("Gdi32.dll\CreateCompatibleDC", "Ptr",0, "Ptr")
-    DllCall("Gdi32.dll\SaveDC", "Ptr",mDC)
-
-    DllCall("Gdi32.dll\SelectObject", "Ptr",mDC, "Ptr",hBrush)
-    DllCall("Gdi32.dll\SelectObject", "Ptr",mDC, "Ptr",hPen)
-    DllCall("Gdi32.dll\SelectObject", "Ptr",mDC, "Ptr",hBM)
-    DllCall("Gdi32.dll\RoundRect", "Ptr",mDC, "Int",0, "Int",0, "Int",CW, "Int",CH, "Int",0, "Int",0)
-
-    DllCall("Gdi32.dll\RestoreDC", "Ptr",mDC, "Int",-1)
-    DllCall("Gdi32.dll\DeleteDC", "Ptr",mDC)
-    DllCall("Gdi32.dll\DeleteObject", "Ptr",hBrush)
-    DllCall("Gdi32.dll\DeleteObject", "Ptr",hPen)
-
-    VarSetCapacity( BITMAP, SzBITMAP := ( A_PtrSize = 8 ? 32 : 24 ) )
-    DllCall("Gdi32.dll\GetObject", "Ptr",hBM, "Int",SzBITMAP, "Ptr",&BITMAP)
-    WB      := Numget(BITMAP, 12, "Int")
-    biSize  := (WB*CH) * 2
-    ttlSize :=  22 + 40 + 8 + biSize
-
-    pCURSOR := DllCall("Kernel32.dll\GlobalAlloc", "Int",0x40, "Ptr",ttlSize, "Ptr")
-
-    NumPut(0x0100020000,    pCURSOR +  0, "Int64")
-    NumPut(CW,              pCURSOR +  6, "UChar")
-    NumPut(CH,              pCURSOR +  7, "UChar")
-    NumPut(40 + 8 + biSize, pCURSOR + 14, "UInt")
-    NumPut(22,              pCURSOR + 18, "UInt")
-    NumPut(0xFFFFFF,        pCURSOR + 66, "UInt")
-    NumPut(CW,     pBMI +  4, "UInt")
-    NumPut(CH*2,   pBMI +  8, "UInt")
-    NumPut(bisize, pBMI + 20, "UInt")
-    NumPut(2,      pBMI + 32, "UInt")
-    NumPut(2,      pBMI + 36, "UInt")
-
-    DllCall("Kernel32.dll\RtlMoveMemory", "Ptr",pCURSOR + 22,         "Ptr",pBMI,    "Ptr",40)
-    DllCall("Kernel32.dll\RtlMoveMemory", "Ptr",pCURSOR + 70,         "Ptr",pBits,   "Ptr",WB*CH)
-    DllCall("Kernel32.dll\RtlFillMemory", "Ptr",pCURSOR + 70+(WB*CH), "Ptr",(WB*CH), "Int",255)
-    DllCall("Gdi32.dll\DeleteObject", "Ptr",hBM)
-
-    Loop, Parse, % "32512,32513,32514,32515,32516,32640,32641,32642,32643,32644,32645,32646,32648,32649,32650,32651", `,
-          DllCall("User32.dll\SetSystemCursor", "Ptr",DllCall("User32.dll\CreateIconFromResourceEx", "Ptr",pCURSOR+22
-                , "UInt",ttlSize-22, "Int",True, "Int",0x30000, "Int",CW, "Int",CH, "Int",0, "Ptr"), "Int",A_Loopfield)
-
-    DllCall("Kernel32.dll\GlobalFree", "Ptr",pCURSOR)
-Return ttlSize
-}
-; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 #NoEnv
-;#Warn
+#Warn
 #SingleInstance, Force
 
 INI := ""
 FileRead, INI, Menu.ini
 
-GuiOptions := { "Title" : "Counter Strike Source Color Picker"
+GuiOptions := { "Title" : "Counter Strike Source Simple Color Picker"
               , "New"   : "-MinimizeBox"
               , "Show"  : "x750 yCenter"
               , "Menu"  : INI }
 
 History := ["663399", "D2B48C", "BF00FF", "FF9F00", "00BFFF"
-          , "FF0000", "FF69B4", "3399FF", "FAEBD7", "D2691E"
-		  , "663399", "D2B48C", "BF00FF", "FF9F00", "00BFFF"
-          , "FF0000", "FF69B4", "3399FF", "FAEBD7", "D2691E"
-		  , "FF0000", "FF69B4", "3399FF", "FAEBD7", "D2691E" ] ; up to 25 colors
+          , "FF0000", "FF69B4", "3399FF", "FAEBD7", "D2691E"] ; up to 25 colors
 
 Colors := ChooseColors(GuiOptions, History*)
 
-;source
-;https://www.autohotkey.com/boards/viewtopic.php?t=92145
-;do your stuff here
 If Colors.Count()
    MsgBox % Colors[1]
-   
-
 

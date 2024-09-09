@@ -6,7 +6,7 @@ Used in JBlock Jailbreak/Minigames server in Counter Strike Source with the serv
 **This is in pre-alpha so expect alot of bugs, incomplete features, etc**<br/>
 ## Introduction
 Hello my JBlock neighbours, its bunnyburger with gradient chat as GUI due to a few people requesting it ingame.<br/>
-I originally made it for myself as a goofy cool thing but others wanted it too so I made it so it has a GUI.<br/>
+I originally made it for myself as a goofy little thing but others wanted it too so I made it so it has a GUI.<br/>
 ![What is this](Git_ReadMeImages/readme_preview.jpg)<br/>
 Here is an example of it in action<br/>
 https://github.com/bunnyburger0498/css-gradient-chat/blob/main/Git_ReadMeImages/videoshow.mp4
@@ -21,8 +21,8 @@ Click a colour which autocopies the code and you paste into CSS chat by pressing
 ![What is this](Git_ReadMeImages/simplepicker_example.jpg)<br/>
 <br/>
 ## Gradient Creator<br/>
-GUI subject to Usability after feature completion.<br/>
 ![What is this](Git_ReadMeImages/0-1-3_GradientPreview.jpg)<br/>
+GUI subject to Usability after feature completion.<br/>
 ## Hotkeys<br/>
 **It is highly recommended you test this out in a Untitled Notepad first to see how it works** <br/>
 ### **F12** <br/>

@@ -22,7 +22,7 @@ Click a colour which autocopies the code and you paste into CSS chat by pressing
 <br/>
 ## Gradient Creator<br/>
 GUI subject to Usability after feature completion.<br/>
-![What is this](Git_ReadMeImages/0-1-3_GradientPreview.png)<br/>
+![What is this](Git_ReadMeImages/0-1-3_GradientPreview.jpg)<br/>
 ## Hotkeys<br/>
 **It is highly recommended you test this out in a Untitled Notepad first to see how it works** <br/>
 ### **F12** <br/>
